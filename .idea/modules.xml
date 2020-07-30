@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NIO1/NIO1.iml" filepath="$PROJECT_DIR$/NIO1/NIO1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NIO2/NIO2.iml" filepath="$PROJECT_DIR$/NIO2/NIO2.iml" />
       <module fileurl="file://$PROJECT_DIR$/learnforNIO.iml" filepath="$PROJECT_DIR$/learnforNIO.iml" />
     </modules>
   </component>
