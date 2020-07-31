@@ -2,11 +2,11 @@ import java.nio.ByteBuffer;
 
 import org.junit.Test;
 
-/*
+/**
  * 一、缓冲区（Buffer）：在 Java NIO 中负责数据的存取。缓冲区就是数组。用于存储不同数据类型的数据
  * 
  * 根据数据类型不同（boolean 除外），提供了相应类型的缓冲区：
- * ByteBuffer
+ * ByteBuffer !!
  * CharBuffer
  * ShortBuffer
  * IntBuffer

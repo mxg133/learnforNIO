@@ -19,7 +19,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-/*
+/**
  * 一、通道（Channel）：用于源节点与目标节点的连接。在 Java NIO 中负责缓冲区中数据的传输。Channel 本身不存储数据，因此需要配合缓冲区进行传输。
  * 
  * 二、通道的主要实现类
@@ -106,7 +106,7 @@ public class TestChannel {
 	
 	//分散和聚集
 	@Test
-	public void test4() throws IOException{
+	public void test4() throws Exception{
 		RandomAccessFile raf1 = new RandomAccessFile("1.txt", "rw");
 		
 		//1. 获取通道
@@ -137,9 +137,9 @@ public class TestChannel {
 	
 	//通道之间的数据传输(直接缓冲区)
 	@Test
-	public void test3() throws IOException{
-		FileChannel inChannel = FileChannel.open(Paths.get("d:/1.mkv"), StandardOpenOption.READ);
-		FileChannel outChannel = FileChannel.open(Paths.get("d:/2.mkv"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+	public void test3() throws Exception{
+		FileChannel inChannel = FileChannel.open(Paths.get("1.jpg"), StandardOpenOption.READ);
+		FileChannel outChannel = FileChannel.open(Paths.get("4.jpg"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
 		
 //		inChannel.transferTo(0, inChannel.size(), outChannel);
 		outChannel.transferFrom(inChannel, 0, inChannel.size());
@@ -151,10 +151,10 @@ public class TestChannel {
 	//使用直接缓冲区完成文件的复制(内存映射文件)
 	@Test
 	public void test2() throws IOException{//2127-1902-1777
-		long start = System.currentTimeMillis();
+//		long start = System.currentTimeMillis();
 		
-		FileChannel inChannel = FileChannel.open(Paths.get("d:/1.mkv"), StandardOpenOption.READ);
-		FileChannel outChannel = FileChannel.open(Paths.get("d:/2.mkv"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+		FileChannel inChannel = FileChannel.open(Paths.get("1.jpg"), StandardOpenOption.READ);
+		FileChannel outChannel = FileChannel.open(Paths.get("3.jpg"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
 		
 		//内存映射文件
 		MappedByteBuffer inMappedBuf = inChannel.map(MapMode.READ_ONLY, 0, inChannel.size());
@@ -168,14 +168,14 @@ public class TestChannel {
 		inChannel.close();
 		outChannel.close();
 		
-		long end = System.currentTimeMillis();
-		System.out.println("耗费时间为：" + (end - start));
+//		long end = System.currentTimeMillis();
+//		System.out.println("耗费时间为：" + (end - start));
 	}
 	
 	//利用通道完成文件的复制（非直接缓冲区）
 	@Test
 	public void test1(){//10874-10953
-		long start = System.currentTimeMillis();
+//		long start = System.currentTimeMillis();
 		
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
@@ -183,8 +183,8 @@ public class TestChannel {
 		FileChannel inChannel = null;
 		FileChannel outChannel = null;
 		try {
-			fis = new FileInputStream("d:/1.mkv");
-			fos = new FileOutputStream("d:/2.mkv");
+			fis = new FileInputStream("1.jpg");
+			fos = new FileOutputStream("2.jpg");
 			
 			inChannel = fis.getChannel();
 			outChannel = fos.getChannel();
@@ -235,8 +235,8 @@ public class TestChannel {
 			}
 		}
 		
-		long end = System.currentTimeMillis();
-		System.out.println("耗费时间为：" + (end - start));
+//		long end = System.currentTimeMillis();
+//		System.out.println("耗费时间为：" + (end - start));
 		
 	}
 
