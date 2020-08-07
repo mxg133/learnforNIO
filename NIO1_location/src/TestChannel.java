@@ -64,10 +64,10 @@ public class TestChannel {
 		Charset cs1 = Charset.forName("GBK");
 		
 		//获取编码器
-		CharsetEncoder ce = cs1.newEncoder();
+		CharsetEncoder ce = cs1.newEncoder();//编码器
 		
 		//获取解码器
-		CharsetDecoder cd = cs1.newDecoder();
+		CharsetDecoder cd = cs1.newDecoder();//解码器
 		
 		CharBuffer cBuf = CharBuffer.allocate(1024);
 		cBuf.put("尚硅谷威武！");
@@ -81,18 +81,19 @@ public class TestChannel {
 		}
 		
 		//解码
-		bBuf.flip();
+		bBuf.flip();//否则乱码
 		CharBuffer cBuf2 = cd.decode(bBuf);
 		System.out.println(cBuf2.toString());
 		
 		System.out.println("------------------------------------------------------");
 		
-		Charset cs2 = Charset.forName("GBK");
+		Charset cs2 = Charset.forName("UTF-8");//乱码
 		bBuf.flip();
 		CharBuffer cBuf3 = cs2.decode(bBuf);
 		System.out.println(cBuf3.toString());
 	}
-	
+
+	//查看有多少字符集
 	@Test
 	public void test5(){
 		Map<String, Charset> map = Charset.availableCharsets();
@@ -135,7 +136,7 @@ public class TestChannel {
 		channel2.write(bufs);
 	}
 	
-	//通道之间的数据传输(直接缓冲区)
+	//通道之间的数据传输(直接缓冲区) ----简单易行 推荐！
 	@Test
 	public void test3() throws Exception{
 		FileChannel inChannel = FileChannel.open(Paths.get("1.jpg"), StandardOpenOption.READ);
