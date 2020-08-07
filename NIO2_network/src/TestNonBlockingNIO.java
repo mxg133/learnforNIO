@@ -78,8 +78,8 @@ public class TestNonBlockingNIO {
 		ssChannel.register(selector, SelectionKey.OP_ACCEPT);
 		
 		//6. 轮询式的获取选择器上已经“准备就绪”的事件
-		while(selector.select() > 0){
-			
+		while(selector.select() > 0){//说明至少有一个准备就绪了
+
 			//7. 获取当前选择器中所有注册的“选择键(已就绪的监听事件)”
 			Iterator<SelectionKey> it = selector.selectedKeys().iterator();
 			
@@ -101,7 +101,7 @@ public class TestNonBlockingNIO {
 					//13. 获取当前选择器上“读就绪”状态的通道
 					SocketChannel sChannel = (SocketChannel) sk.channel();
 					
-					//14. 读取数据
+					/**14. 读取数据*/
 					ByteBuffer buf = ByteBuffer.allocate(1024);
 					
 					int len = 0;

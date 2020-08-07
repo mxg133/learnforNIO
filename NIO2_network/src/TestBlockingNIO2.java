@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class TestBlockingNIO2 {
 	
-	//客户端
+	//客户端 负责发送数据
 	@Test
 	public void client() throws IOException{
 		SocketChannel sChannel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 9898));
@@ -40,7 +40,7 @@ public class TestBlockingNIO2 {
 		sChannel.close();
 	}
 	
-	//服务端
+	//服务端 负责接受数据
 	@Test
 	public void server() throws IOException{
 		ServerSocketChannel ssChannel = ServerSocketChannel.open();

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-public class TestNonBlockingNIO2 {
+public class TestNonBlockingNIO2UDP {
 	
 	@Test
 	public void send() throws IOException{
